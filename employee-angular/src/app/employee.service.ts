@@ -15,4 +15,13 @@ export class EmployeeService {
   public saveEmployee(employee: Employee): Observable<Employee> {
     return this.httpClient.post<Employee>(`${this.api}/save`, employee);
   }
+
+  public getEmployees(): Observable<Employee[]> {
+
+
+    return this.httpClient.get<Employee[]>(`${this.api}/get`)
+  }
+
+
+
 }

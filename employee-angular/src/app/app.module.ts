@@ -18,6 +18,11 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDividerModule } from '@angular/material/divider';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { EmployeeListComponent } from './employee-list/employee-list.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatButtonModule } from '@angular/material/button';
+
 
 
 @NgModule({
@@ -25,7 +30,8 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     HeaderComponent,
     HomeComponent,
-    EmployeeComponent
+    EmployeeComponent,
+    EmployeeListComponent
   ],
   imports: [
     BrowserModule,
@@ -42,6 +48,10 @@ import { HttpClientModule } from '@angular/common/http';
     MatDividerModule,
     FormsModule,
     HttpClientModule,
+    MatTooltipModule,
+    MatTableModule,
+    MatButtonModule
+
 
   ],
   providers: [],

@@ -1,8 +1,12 @@
 <div class="container">
 
     <div>
-        <button mat-raised-button color="accent" r>Go to Employee List</button>
+        <button mat-raised-button color="accent" [routerLink]="['/employee-list']"
+            routerLinkActive="router-link-active">Go to Employee List</button>
+
     </div>
+
+
 
     <div class="card p-5 mt-2">
 
@@ -45,7 +49,7 @@
                 <Label>Gender</Label>
                 <mat-radio-group aria-label="Select an option">
                     <mat-radio-button [checked]="checkGender('M') " (click)="selectGender('M')">M</mat-radio-button>
-                    <mat-radio-button [checked]="checkGender('F')   " (click)="selectGender('F')">F</mat-radio-button>
+                    <mat-radio-button [checked]="checkGender('F')  " (click)="selectGender('F')">F</mat-radio-button>
                 </mat-radio-group>
             </div>
 
