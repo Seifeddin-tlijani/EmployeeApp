@@ -11,7 +11,7 @@ export class EmployeeListComponent implements OnInit {
 
   dataSource: Employee[] = [];
 
-  displayedColumns: string[] = ['employeeId', 'employeeName', 'employeeContractNumber', 'employeeAddress', 'employeeDepartement', 'employeeGender', 'employeeSkills'];
+  displayedColumns: string[] = ['employeeId', 'employeeName', 'employeeContractNumber', 'employeeAddress', 'employeeDepartement', 'employeeGender', 'employeeSkills', 'delete'];
 
 
 
@@ -24,6 +24,32 @@ export class EmployeeListComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+
+  deleteEmployee(employeeId: number): void {
+    console.log(employeeId);
+    this.employeeService.deletEmployee(employeeId).subscribe(
+
+      {
+
+        next: (res) => {
+          console.log(res);
+        },
+        error: (err: HttpErrorResponse) => {
+          console.log(err);
+
+        }
+
+
+
+      }
+
+
+    );
+  }
+
+
+
 
   getEmployeeList(): void {
     this.employeeService.getEmployees().subscribe(
