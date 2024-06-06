@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Employee } from '../employee.model';
 import { NgForm } from '@angular/forms';
 import { EmployeeService } from '../employee.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-employee',
@@ -11,24 +11,20 @@ import { Router } from '@angular/router';
 })
 export class EmployeeComponent implements OnInit {
 
-  employee: Employee = {
-    employeeId: 120,
-    employeeName: '',
-    employeeContractNumber: '',
-    employeeAddress: '',
-    employeeGender: '',
-    employeeDepartment: '',
-    employeeSkills: '',
-  };
+
+  employee: any;
 
   skills: string[] = [];
 
   constructor(private employeeService: EmployeeService,
-    private router: Router
+    private router: Router,
+    private activatedRoute: ActivatedRoute
   ) {
   }
 
   ngOnInit(): void {
+    this.employee = this.activatedRoute.snapshot.data['employee'];
+    console.log(this.employee)
   }
 
 

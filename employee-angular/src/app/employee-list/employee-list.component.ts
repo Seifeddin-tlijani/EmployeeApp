@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EmployeeService } from '../employee.service';
 import { Employee } from '../employee.model';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-employee-list',
   templateUrl: './employee-list.component.html',
@@ -11,11 +12,13 @@ export class EmployeeListComponent implements OnInit {
 
   dataSource: Employee[] = [];
 
-  displayedColumns: string[] = ['employeeId', 'employeeName', 'employeeContractNumber', 'employeeAddress', 'employeeDepartement', 'employeeGender', 'employeeSkills', 'delete'];
+  displayedColumns: string[] = ['employeeId', 'employeeName', 'employeeContractNumber', 'employeeAddress', 'employeeDepartement', 'employeeGender', 'employeeSkills', 'edit', 'delete'];
 
 
 
-  constructor(private employeeService: EmployeeService) {
+  constructor(private employeeService: EmployeeService,
+    private router: Router
+  ) {
     this.getEmployeeList();
 
   }
@@ -24,33 +27,29 @@ export class EmployeeListComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  updateEmployee(employeeId: number): void {
 
+    this.router.navigate(['/employee', { employeeId: employeeId }])
+
+
+
+
+
+  }
 
   deleteEmployee(employeeId: number): void {
     console.log(employeeId);
     this.employeeService.deletEmployee(employeeId).subscribe(
-
       {
-
         next: (res) => {
           console.log(res);
         },
         error: (err: HttpErrorResponse) => {
           console.log(err);
-
         }
-
-
-
       }
-
-
     );
   }
-
-
-
-
   getEmployeeList(): void {
     this.employeeService.getEmployees().subscribe(
 
